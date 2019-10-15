@@ -16,7 +16,7 @@ Version    : 1.0
 Released   : 20110926
 
 -->
-
+<%User user=(User) session.getAttribute("LOGGED_USER");%>>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -38,8 +38,8 @@ Released   : 20110926
 		<ul>
 			<li class="current_page_item"><a href="/iteaShop2/main">Главная</a></li>
 			<li><a href="/iteaShop2/products">Товары</a></li>
-			<li><a href="/iteaShop2/register">Регистрация</a></li>
-			<li><a href="/iteaShop2/login">Вход</a></li>
+			<li><a href="/iteaShop2/register"><%=user==null?"Регистрация":"Редактирование"%></a></li>
+			<li><a href="/iteaShop2/login"><%=user==null?"Вход":"Выход" %></a></li>
 			<li><a href="/iteaShop2/cart">Корзина</a></li>
 		</ul>
 	</div>

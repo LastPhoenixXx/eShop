@@ -2,12 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/include/Heder.jsp" %>
 <%@page import="models.*"%>>
-<%@page import="javax.servlet.http.HttpSession" %>>
+<%@page import="javax.servlet.http.HttpSession" %>
 
  <h1>Registration</h1>
  
    
-<%User user = session.getAttribute("LOGGED_USER") != null ? (User) session.getAttribute("LOGGED_USER") : new User();%>
+<%user = session.getAttribute("LOGGED_USER") != null ? (User) session.getAttribute("LOGGED_USER") : new User();%>
  
  <table border = '0'>
 		<tr>

@@ -47,6 +47,11 @@ public class LoginServlet extends HttpServlet {
     	HttpSession session = HTTPUtils.getCurrentSession();
     	model.addAttribute("session", session);
     	
+    	if(session.getAttribute("LOGGED_USER")!=null) {
+    		session.removeAttribute("LOGGED_USER");
+    		return "mainPage";
+    	}
+    	
     	System.out.println(session.getAttribute("LOGGED_USER"));
     	
     	return "login";
