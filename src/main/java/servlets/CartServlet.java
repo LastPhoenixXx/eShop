@@ -17,33 +17,27 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import models.Product;
 import mySQL.MySQLProductDAO;
 import utils.HTTPUtils;
 
-/**
- * Servlet implementation class CartServlet
- */
+
 @Controller
 @RequestMapping("/cart")
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+  
     public CartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	
 	@RequestMapping(method = RequestMethod.GET)
-	protected String get(RequestAttribute requestAttribute, ModelMap model, HttpServletRequest request) {
+	protected String get(RedirectAttributes redirectAttributes, ModelMap model, HttpServletRequest request) {
 		HttpSession session = HTTPUtils.getCurrentSession();
     	model.addAttribute("session", session);
 		

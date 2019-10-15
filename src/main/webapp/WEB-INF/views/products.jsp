@@ -7,7 +7,7 @@
 <script>
 function sendData(){
 $.ajax({
-        url:     "new.jsp", 
+        url:     "/cart", 
         type:     "GET", 
         dataType: "html", 
     data: 'product=${product.id}&qnt=1',

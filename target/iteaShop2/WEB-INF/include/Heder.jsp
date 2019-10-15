@@ -16,7 +16,7 @@ Version    : 1.0
 Released   : 20110926
 
 -->
-<%User user=(User) session.getAttribute("LOGGED_USER");%>>
+<%User user=(User) session.getAttribute("LOGGED_USER");%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

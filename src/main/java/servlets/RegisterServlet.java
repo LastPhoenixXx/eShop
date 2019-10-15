@@ -98,7 +98,12 @@ public class RegisterServlet extends HttpServlet {
 					user.getRegion(), gender, user.getComment())) {
 				System.out.println("else");
 				
-
+				try {
+					user.setPassword(passwordHasher.hash(user.getPassword()));
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 					mySQLUserDAO.updateUser(user);
 					session.setAttribute("LOGGED_USER", user);
 					return "mainPage";
