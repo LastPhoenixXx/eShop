@@ -3,30 +3,30 @@ package models;
 import java.util.List;
 
 public class Cart {
-	private List<Product> produts;
+	private List<Product> products;
 
 	
 	
-	public Cart(List<Product> produts) {
+	public Cart(List<Product> products) {
 		super();
-		this.produts = produts;
+		this.products = products;
 	}
 
 	public Cart() {
 		super();
 	}
 
-	public List<Product> getProduts() {
-		return produts;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setProduts(List<Product> produts) {
-		this.produts = produts;
+	public void setProduts(List<Product> products) {
+		this.products = products;
 	}
 
 	@Override
 	public String toString() {
-		return "Cart [produts=" + produts + "]";
+		return "Cart [products=" + products + "]";
 	}
 
 	

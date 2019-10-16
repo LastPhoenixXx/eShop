@@ -17,8 +17,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import models.Cart;
 import models.Product;
 import mySQL.MySQLProductDAO;
 import utils.HTTPUtils;
@@ -37,10 +39,33 @@ public class CartServlet extends HttpServlet {
 
 	
 	@RequestMapping(method = RequestMethod.GET)
-	protected String get(RedirectAttributes redirectAttributes, ModelMap model, HttpServletRequest request) {
+	protected String get(RedirectAttributes redirectAttributes, ModelMap model, HttpServletRequest request,
+			@RequestParam(value="productId", required = false) String productId) {
 		HttpSession session = HTTPUtils.getCurrentSession();
     	model.addAttribute("session", session);
 		
+    	Cart cart = (Cart)session.getAttribute("cart");
+    	
+    	if (productId != null) {
+			if (cart == null) {
+				cart = new Cart();
+			}
+			Product product = new Product();
+			String[] param = productId.split(":");
+			product = new MySQLProductDAO().getProductById(Integer.parseInt(param[0]));
+			Integer qnt = Integer.parseInt(param[1]);
+			if (qnt > 0) {
+				CartController.addProduct(cart, product, qnt);
+			} else if (qnt < 0) {
+				CartController.removeProduct(cart, product, qnt);
+			}
+			session.setAttribute("cart", cart);
+			model.addAttribute("session", session);
+			return "productsView";
+		}
+    	
+    	
+    	
 		request.setAttribute("productToBuy", (List<Product>) session.getAttribute("cart"));
 		return "cart";
 	}

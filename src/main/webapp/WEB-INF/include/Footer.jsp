@@ -14,8 +14,8 @@
                     <tr>
                     <td width="252" align="left">
                     <font color=white>
-                    <%=userSe==null?"Вы не авторизованы":"Добро пожаловать "+userSe.getName() %> <br />
-                    В вашей корзине 0 товаров.
+                    <%=userSe==null?"Вы не авторизованы":"Добро пожаловать "+userSe.getName() %> <br/>
+                    В вашей корзине <span id = "cart">0</span> товаров.
                     </font>
                     </td>
                     </tr>
