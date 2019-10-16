@@ -5,7 +5,7 @@
     
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
     
-   <% //User userSe=(User) session.getAttribute("LOGGED_USER");%>
+   <% User userSe=(User) session.getAttribute("LOGGED_USER");%>
     
     </div>
             
@@ -14,7 +14,7 @@
                     <tr>
                     <td width="252" align="left">
                     <font color=white>
-                    <%=user==null?"Вы не авторизованы":"Добро пожаловать "+user.getName() %> <br />
+                    <%=userSe==null?"Вы не авторизованы":"Добро пожаловать "+userSe.getName() %> <br />
                     В вашей корзине 0 товаров.
                     </font>
                     </td>

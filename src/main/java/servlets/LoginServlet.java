@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
     	
     	if(session.getAttribute("LOGGED_USER")!=null) {
     		session.removeAttribute("LOGGED_USER");
-    		return "mainPage";
+    		return new ModelAndView("redirect:/mainPage").getViewName();
     	}
     	
     	System.out.println(session.getAttribute("LOGGED_USER"));
@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		
-		return "mainPage";
+		return new ModelAndView("redirect:/mainPage").getViewName();
 	}
 
 }
