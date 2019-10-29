@@ -1,7 +1,8 @@
 package controllers;
 
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import models.Cart;
@@ -10,9 +11,10 @@ import models.Product;
 public class CartController {
 
 	public static void addProduct(Cart cart, Product product, Integer qnt) {
-		List<Product> set = cart.getProducts();
-		if (set.contains(product)) {
+		Map<Product, Integer> set = cart.getProducts();
+		if (set.containsKey(product)) {
 			qnt += cart.getProducts().get(product);
+			System.out.println("true");
 		}
 		cart.getProducts().put(product, qnt);
 		CartController.countCartSize(cart);
@@ -20,9 +22,9 @@ public class CartController {
 	}
 	
 	public static void setProductQnt(Cart cart, Product product, Integer qnt) {
-		Set<Product> set = cart.getProducts().keySet();
+		Map<Product, Integer> set = cart.getProducts();
 		
-		if (set.contains(product)) {
+		if (set.containsKey(product)) {
 			cart.getProducts().put(product, qnt);
 		}
 		cart.getProducts().put(product, qnt);
@@ -60,13 +62,7 @@ public class CartController {
 	}
 
 	public static void cleanCart(Cart cart) {
-		Set<Product> set = cart.getProducts().keySet();
-		Iterator it = set.iterator();
-		while (it.hasNext()) {
-			it.next();
-			it.remove();
-		}
-		cart.setSize(0);
+		cart.setProducts(new HashMap<Product, Integer>());
 		cart.setTotalCost(0);
 	}
 	
@@ -74,7 +70,6 @@ public class CartController {
 		Set<Product> set = cart.getProducts().keySet();
 		int size = 0;
 		for (Product product : set) {
-			System.out.println(size + " + " + cart.getProducts().get(product));
 			size += cart.getProducts().get(product);
 		}
 		cart.setSize(size);

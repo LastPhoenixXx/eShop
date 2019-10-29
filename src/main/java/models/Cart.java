@@ -1,27 +1,49 @@
 package models;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Cart {
-	private List<Product> products;
-
-	
-	
-	public Cart(List<Product> products) {
-		super();
-		this.products = products;
-	}
+	private Map<Product, Integer> products;
+	int totalCost;
+	int size;
 
 	public Cart() {
 		super();
+		this.products = new HashMap();
 	}
 
-	public List<Product> getProducts() {
+	public Cart(Map<Product, Integer> products, int totalCost, int size) {
+		super();
+		this.products = products;
+		this.totalCost = totalCost;
+		this.size = size;
+	}
+
+	public Map<Product, Integer> getProducts() {
 		return products;
 	}
 
-	public void setProduts(List<Product> products) {
+	public void setProducts(Map<Product, Integer> products) {
 		this.products = products;
+	}
+	
+
+	public int getTotalCost() {
+		return totalCost;
+	}
+
+	public void setTotalCost(int totalCost) {
+		this.totalCost = totalCost;
+	}
+	
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
 	}
 
 	@Override
@@ -29,5 +51,8 @@ public class Cart {
 		return "Cart [products=" + products + "]";
 	}
 
+	
+	
+	
 	
 }

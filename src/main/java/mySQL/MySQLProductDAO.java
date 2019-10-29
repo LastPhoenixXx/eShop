@@ -75,7 +75,7 @@ public class MySQLProductDAO implements ProductDAO {
 
 		Connection conn = openDatabase();
 		try {
-			prepSt = conn.prepareStatement(SELECTCATEGORY_QUERY);
+			prepSt = conn.prepareStatement(SELECTID_QUERY );
 			prepSt.setLong(1, id);
 			rs = prepSt.executeQuery();
 
@@ -140,4 +140,41 @@ public class MySQLProductDAO implements ProductDAO {
 		}
 		return productList;
 	}
+
+	@Override
+	public Product getOneProductByCategory(int category) {
+		Product product = new Product();
+		
+		ResultSet rs = null;
+
+		PreparedStatement prepSt = null;
+
+		Connection conn = openDatabase();
+		try {
+			prepSt = conn.prepareStatement(SELECTCATEGORY_QUERY);
+			prepSt.setInt(1, category);
+			rs = prepSt.executeQuery();
+
+			if (rs.next()) {
+				product.setId(rs.getInt("id"));
+				product.setName(rs.getString("name"));
+				product.setDescription(rs.getString("description"));
+				product.setPrice(rs.getInt("price"));
+				product.setCategory(rs.getInt("category"));
+			}
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if (prepSt != null) {
+				try {
+					prepSt.close();
+				} catch (SQLException sqlEx) {
+				}
+				prepSt = null;
+			}
+		}
+		return product;
+	}	
 }

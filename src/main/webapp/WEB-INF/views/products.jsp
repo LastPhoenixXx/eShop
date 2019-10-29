@@ -22,9 +22,9 @@
 			<tr>
 				<td>price:${product.price}</td>
 				<td>
-				<img src="static/images/minus.jpg" onclick = "minus(${product.id})"/>
+				<img src="static/images/minus.jpg" width = "20" onclick = "minus(${product.id})"/>
 				<span id = "q${product.id}">1</span>
-				<img src="static/images/plus.jpg" onclick = "plus(${product.id})"/>
+				<img src="static/images/plus.jpg" width = "20" onclick = "plus(${product.id})"/>
 				<input type="submit" value="buy"
 					onclick="addToCart(${product.id})" /></td>
 			</tr>

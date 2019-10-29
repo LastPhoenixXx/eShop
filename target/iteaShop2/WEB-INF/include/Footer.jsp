@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+    <%@ page isELIgnored="false"%>
     <%@page import="models.*"%>
     
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -14,8 +14,8 @@
                     <tr>
                     <td width="252" align="left">
                     <font color=white>
-                    <%=userSe==null?"Вы не авторизованы":"Добро пожаловать "+userSe.getName() %> <br />
-                    В вашей корзине 0 товаров.
+                    <%=userSe==null?"Вы не авторизованы":"Добро пожаловать "+userSe.getName() %> <br/>
+                    В вашей корзине <span id = "cart">${CartController.countCartSize(sessionScope.cart) }</span> товаров.
                     </font>
                     </td>
                     </tr>
@@ -25,9 +25,9 @@
 						<li><a href="./products?category=1">Alco</a></li>
 						<li><a href="./products?category=2">Drugs</a></li>
 						<li><a href="./products?category=3">Cookie</a></li>
-						<li><a href="/register">Регистрация</a></li>
-						<li><a href="/login">Вход</a></li>
-						<li><a href="/cart">Корзина</a></li>
+						<li><a href="/iteaShop2/register"><%=userSe==null?"Регистрация":"Редактирование"%></a></li>
+						<li><a href="/iteaShop2/login"><%=userSe==null?"Вход":"Выход" %></a></li>
+						<li><a href="/iteaShop2/cart">Корзина</a></li>
 					</ul>
 				</div>
 			</div>

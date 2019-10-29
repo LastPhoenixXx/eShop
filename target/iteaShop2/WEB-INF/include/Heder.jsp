@@ -36,7 +36,7 @@ Released   : 20110926
 	</div>
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="/iteaShop2/main">Главная</a></li>
+			<li class="current_page_item"><a href="/iteaShop2/mainPage">Главная</a></li>
 			<li><a href="/iteaShop2/products">Товары</a></li>
 			<li><a href="/iteaShop2/register"><%=user==null?"Регистрация":"Редактирование"%></a></li>
 			<li><a href="/iteaShop2/login"><%=user==null?"Вход":"Выход" %></a></li>

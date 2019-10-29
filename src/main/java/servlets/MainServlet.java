@@ -1,9 +1,8 @@
 package servlets;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import models.Product;
+import mySQL.MySQLProductDAO;
 import utils.HTTPUtils;
 
 /**
@@ -40,8 +41,14 @@ public class MainServlet extends HttpServlet {
 	protected String doGet(RedirectAttributes redirectAttributes, ModelMap model){
     	HttpSession session = HTTPUtils.getCurrentSession();
     	model.addAttribute("session", session);
-    	System.out.println(session.getAttribute("LOGGED_USER"));
-    	
+    	int amountOfCategory = 3;
+    	List<Product> products = new ArrayList<Product>();
+    	for(int i = 1; i <= amountOfCategory; i++) {
+    		Product prod = new MySQLProductDAO().getOneProductByCategory(i);
+    		products.add(prod);
+    	}
+    	System.out.println(products);
+    	session.setAttribute("productsMP", products);
     	return "mainPage";
 	}
 
@@ -52,7 +59,6 @@ public class MainServlet extends HttpServlet {
 	protected String doPost(RedirectAttributes redirectAttributes, ModelMap model) {
     	HttpSession session = HTTPUtils.getCurrentSession();
     	model.addAttribute("session", session);
-    	System.out.println(session.getAttribute("LOGGED_USER"));
 		return "mainPage";
 	}
 
