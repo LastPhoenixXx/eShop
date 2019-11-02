@@ -14,7 +14,6 @@ public class CartController {
 		Map<Product, Integer> set = cart.getProducts();
 		if (set.containsKey(product)) {
 			qnt += cart.getProducts().get(product);
-			System.out.println("true");
 		}
 		cart.getProducts().put(product, qnt);
 		CartController.countCartSize(cart);

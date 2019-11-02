@@ -16,7 +16,7 @@ function addToCart(id) {
 		data : "productId=" + (id + ":" + qnt),
 		success : function(response) {
 			alert('Product added to cart');
-			var cartSize = +document.getElementById('cart').innerHTML.substr(6) + +qnt;
+			var cartSize = +document.getElementById('cart').innerHTML + +qnt;
 			document.getElementById('cart').innerHTML = +cartSize;
 		}
 	});

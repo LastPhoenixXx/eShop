@@ -44,14 +44,12 @@ public class CartServlet extends HttpServlet {
 			if (cart == null) {
 				cart = new Cart();
 			}
-			System.out.println("Cart: " + cart);
 			
 			Product product = new Product();
 			String[] param = productId.split(":");
 			int prodIdToCart = Integer.parseInt(param[0]);
 			product = new MySQLProductDAO().getProductById(prodIdToCart);
 			Integer qnt = Integer.parseInt(param[1]);
-			System.out.println("Prod: " + product);
 			if (qnt > 0) {
 				CartController.addProduct(cart, product, qnt);
 			} else if (qnt < 0) {
@@ -82,7 +80,6 @@ public class CartServlet extends HttpServlet {
 				products = new ArrayList<Product>();
 			}
 			products.add(product);
-			System.out.println(products);
 		}
 		return "products";
 	}
